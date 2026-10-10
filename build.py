@@ -112,6 +112,9 @@ def page(filename, title, active, main, desc=DESC, og='assets/img/og.jpg', prelo
         {icon('crystal', 'brand__gem')}
         <span class="brand__text">Crystals <small>of</small> Fate</span>
       </a>
+      <button class="sound" type="button" data-state="waiting" aria-label="Play music" aria-pressed="false">
+        <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </button>
       <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
       <div class="nav__menu" id="menu">
         <nav class="nav__links" aria-label="Primary">{links}</nav>
@@ -145,6 +148,7 @@ def page(filename, title, active, main, desc=DESC, og='assets/img/og.jpg', prelo
     <button class="lightbox__btn lightbox__next" aria-label="Next">{icon('chevron')}</button>
   </div>
 
+  <script src="{stamp('js/music.js')}" defer></script>
   <script src="{stamp('js/main.js')}" defer onerror="document.documentElement.className=''"></script>
 </body>
 </html>

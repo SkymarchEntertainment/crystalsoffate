@@ -34,6 +34,10 @@ To add a news post, add an entry to `POSTS` and its body to `POST_BODY` in `buil
 
 All of it is disabled under `prefers-reduced-motion`.
 
+## Music
+
+`js/music.js` plays `assets/audio/main-theme.mp3` (the game's main menu theme) on a loop. Browsers block sound until the visitor interacts with the page, so it starts on the first click, tap or key press when autoplay is refused. The nav button mutes it; the choice is remembered, and playback carries on from the same point across pages.
+
 ## Preview locally
 
 ```bash
