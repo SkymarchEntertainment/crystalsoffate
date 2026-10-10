@@ -1541,3 +1541,15 @@ a:hover > .more, a:hover .post-card__body .more { color: var(--gold-100); letter
 .showcase--wide.is-ready .slide[data-pos="1"] { transform: translateX(56%) translateZ(-200px) rotateY(-30deg) scale(.8); }
 .showcase--wide.is-ready .slide[data-pos="-2"] { transform: translateX(-100%) translateZ(-380px) rotateY(36deg) scale(.6); }
 .showcase--wide.is-ready .slide[data-pos="2"] { transform: translateX(100%) translateZ(-380px) rotateY(-36deg) scale(.6); }
+
+/* The lower download buttons are a fixed size, so their contents must be too. The hero buttons scale
+   with the scene (cqw); outside the hero those units follow the viewport and overflow on wide screens. */
+@media (min-width: 1100px) {
+  .feature .downloads--static { gap: 14px; }
+  .feature .downloads--static .dl { gap: 14px; border-radius: 8px; }
+  .feature .downloads--static .dl svg { width: 38px; height: 38px; }
+  .feature .downloads--static .dl__text b { font-size: 24px; }
+  .feature .downloads--static .dl__text small { margin-top: 7px; font-size: 10px; }
+  .feature .downloads--static .dl__text--hp small { margin: 0 0 3px; font-size: 11px; }
+  .feature .downloads--static .dl__text--hp b { font-size: 25px; }
+}
