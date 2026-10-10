@@ -272,19 +272,20 @@ FEATURES = [
     ('Choose Your Loadout', 'bg-battleground', 'tall', [('emote-celleste', 'Celleste emote'), ('emote-corvax', 'Corvax emote'), ('emote-zarah', 'Zarah emote')]),
 ]
 # Hero scene layers, back to front. Position is % of the 1672x873 scene (left, top, width).
-# depth: how far the layer shifts with the pointer; scroll: how it drifts as the page scrolls (+ lags behind, - runs ahead).
+# depth: how far the layer shifts with the pointer; scroll: how much it lags behind the page as it scrolls.
+# Scroll values stay >= 0: a layer that ran ahead of the page would lift its bottom edge into view.
 LAYERS = {
-    'clouds-back': dict(img='layer-clouds', pos=(-8, 18, 116), depth=.3, scroll=.16),
-    'island-d': dict(img='layer-island-d', pos=(26.5, 7, 3.2), depth=.4, scroll=.24),
-    'island-b': dict(img='layer-island-b', pos=(76.5, 5, 7.5), depth=.5, scroll=.22),
-    'island-c': dict(img='layer-island-c', pos=(86, 4, 11), depth=.7, scroll=.2),
-    'island-a': dict(img='layer-island-a', pos=(93, 44, 5), depth=.6, scroll=.2),
-    'castle': dict(img='layer-castle', pos=(9, -3, 100), depth=.9, scroll=.1, inner='<div class="fx fx-water"></div>'),
-    'clouds-front': dict(img='layer-clouds', pos=(-8, 38, 116), depth=1.6, scroll=.03),
-    'arch': dict(img='layer-arch', pos=(-3, -14, 46), depth=2.6, scroll=-.06),
-    # the knight shares the arch's depth so he stays planted on the wall
-    'knight': dict(img='layer-knight', pos=(13.8, 47.9, 10.5), depth=2.6, scroll=-.06, inner='<canvas class="cape"></canvas>'),
-    'foliage': dict(img='layer-foliage', pos=(-3, -9, 106), depth=4.2, scroll=-.14),
+    'clouds-back': dict(img='layer-clouds', pos=(-8, 18, 116), depth=.3, scroll=0.3),
+    'island-d': dict(img='layer-island-d', pos=(26.5, 7, 3.2), depth=.4, scroll=0.38),
+    'island-b': dict(img='layer-island-b', pos=(76.5, 5, 7.5), depth=.5, scroll=0.36),
+    'island-c': dict(img='layer-island-c', pos=(86, 4, 11), depth=.7, scroll=0.34),
+    'island-a': dict(img='layer-island-a', pos=(93, 44, 5), depth=.6, scroll=0.34),
+    'castle': dict(img='layer-castle', pos=(9, -3, 100), depth=.9, scroll=0.22, inner='<div class="fx fx-water"></div>'),
+    'clouds-front': dict(img='layer-clouds', pos=(-8, 38, 116), depth=1.6, scroll=0.12),
+    'arch': dict(img='layer-arch', pos=(-3, -14, 46), depth=2.6, scroll=0.05),
+    # the knight shares the arch's depth so he stays planted, and sits behind it so the parapet hides his feet
+    'knight': dict(img='layer-knight', pos=(13.8, 50.6, 10.5), depth=2.6, scroll=.05, inner='<canvas class="cape"></canvas>'),
+    'foliage': dict(img='layer-foliage', pos=(-3, -9, 106), depth=4.2, scroll=0),
 }
 
 
@@ -335,8 +336,8 @@ def home():
                 <div class="fx fx-sparks" aria-hidden="true">{sparks}</div>
               </div>
             </div>
-            {layer('arch')}
             {layer('knight')}
+            {layer('arch')}
             {layer('foliage')}
             <div class="fx fx-flash" aria-hidden="true"></div>
           </div>
