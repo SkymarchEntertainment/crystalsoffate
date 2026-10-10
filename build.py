@@ -42,6 +42,15 @@ def img(path, alt, cls='', lazy=True):
     return f'<img{c} src="{path}" alt="{escape(alt)}" width="{w}" height="{h}"{l}>'
 
 
+def holo(path, alt, cls=''):
+    """Card image with holographic foil and glare layers masked to its own shape."""
+    w, h = size(path)
+    m = f' style="-webkit-mask-image:url({path});mask-image:url({path})"'
+    return (f'<span class="holo {cls}" style="--ar:{w / h:.4f}">'
+            f'<img src="{path}" alt="{escape(alt)}" width="{w}" height="{h}" loading="lazy" decoding="async">'
+            f'<span class="holo__foil"{m}></span><span class="holo__glare"{m}></span></span>')
+
+
 def ext(url):
     return ' target="_blank" rel="noopener"' if url.startswith('http') else ''
 
@@ -171,7 +180,7 @@ MUST = ('<p class="callout">Make sure to delete any previous installed versions,
 
 def cards(prefix, n):
     return '<div class="card-wall" data-stagger>' + ''.join(
-        img(f'assets/img/{prefix}-card-{i:02d}.webp', 'New card art') for i in range(1, n + 1)) + '</div>'
+        holo(f'assets/img/{prefix}-card-{i:02d}.webp', 'New card art') for i in range(1, n + 1)) + '</div>'
 
 
 def ul(items):
@@ -260,7 +269,7 @@ def home():
     <section class="feature" style="--bg:url(../assets/img/{bg}.webp)">
       <div class="feature__inner">
         <h2 data-reveal>{title}</h2>{RULE}
-        <div class="gallery gallery--{kind}" data-stagger>{''.join(img(f'assets/img/{n}.webp', a, 'tilt') for n, a in items)}</div>
+        <div class="gallery gallery--{kind}" data-stagger>{''.join(holo(f'assets/img/{n}.webp', a) for n, a in items)}</div>
       </div>
     </section>''' for title, bg, kind, items in FEATURES)
     sparks = ''.join(f'<i style="--x:{x}%;--y:{y}%;--d:{d}s;--k:{k}"></i>' for x, y, d, k in SPARKS)
@@ -395,7 +404,7 @@ def notes(lines):
 
 def item(name, title, rarity, role, url):
     return f'''<a class="item item--{rarity} tilt" href="{url}" target="_blank" rel="noopener">
-            <span class="item__media"><video muted loop playsinline preload="none" poster="assets/img/{name}.webp" data-autoplay aria-label="{escape(title)}"><source src="assets/video/{name}.mp4" type="video/mp4"></video></span>
+            <span class="item__media"><video muted loop playsinline preload="none" poster="assets/img/{name}.webp" data-autoplay aria-label="{escape(title)}"><source src="assets/video/{name}.mp4" type="video/mp4"></video><span class="holo__foil"></span><span class="holo__glare"></span></span>
             <span class="item__meta"><em>{rarity}</em><strong>{escape(title)}</strong><small>{role}</small></span>
             <span class="more">View details {icon('external')}</span>
           </a>'''
@@ -407,8 +416,8 @@ def genesis():
     for count, label, bg, odds, names in (
             ('2', 'Unique Mythic Cards', 'bg-cards', '1 / 1', ('g-mythic-1', 'g-mythic-2')),
             ('2', 'Ultra Unique Legendary Cards', 'bg-battleground', '1 / 10', ('g-legendary-1', 'g-legendary-2'))):
-        cells = ''.join(f'''<a class="unique tilt" href="{info}" target="_blank" rel="noopener">
-            <span class="unique__odds">{odds}</span>{img(f'assets/img/{n}.webp', label)}</a>''' for n in names)
+        cells = ''.join(f'''<a class="unique" href="{info}" target="_blank" rel="noopener">
+            <span class="unique__odds">{odds}</span>{holo(f'assets/img/{n}.webp', label, 'holo--rare')}</a>''' for n in names)
         uniques += f'''
     <section class="feature" style="--bg:url(../assets/img/{bg}.webp)">
       <div class="feature__inner">

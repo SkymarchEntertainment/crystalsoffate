@@ -1088,3 +1088,100 @@ a:hover > .more, a:hover .post-card__body .more { color: var(--gold-100); letter
 .is-deep .to-top { opacity: 1; translate: none; visibility: visible; }
 .to-top:hover { background: var(--gold-300); color: #000; box-shadow: 0 0 20px rgba(240, 205, 120, .7); }
 .to-top:hover svg { translate: 0 -3px; }
+
+/* ---------- Holographic cards ---------- */
+
+@property --rx { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+@property --ry { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+@property --hx { syntax: "<percentage>"; inherits: true; initial-value: 50%; }
+@property --hy { syntax: "<percentage>"; inherits: true; initial-value: 50%; }
+@property --o { syntax: "<number>"; inherits: true; initial-value: 0; }
+
+.holo {
+  position: relative;
+  display: block;
+  aspect-ratio: var(--ar);
+  min-width: 0;
+  transform: perspective(700px) translateY(var(--fy, 0px)) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--sc, 1));
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.3, 1.5, .5, 1), filter .35s, opacity .7s, translate .7s cubic-bezier(.2, .7, .2, 1);
+  filter: drop-shadow(0 16px 20px rgba(0, 0, 0, .7));
+  touch-action: pan-y;
+  cursor: pointer;
+  will-change: transform;
+}
+.holo.is-active {
+  --sc: 1.07;
+  z-index: 5;
+  transition: transform .09s linear, filter .35s;
+  filter: drop-shadow(0 0 18px rgba(255, 214, 120, .6)) drop-shadow(0 26px 28px rgba(0, 0, 0, .75));
+}
+.holo img,
+.gallery .holo img,
+.card-wall .holo img,
+.unique .holo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  filter: none;
+  scale: none;
+}
+.holo__foil, .holo__glare {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}
+/* rainbow foil: fine diagonal lines over a spectrum that slides against the pointer */
+.holo__foil {
+  background-image:
+    repeating-linear-gradient(118deg, transparent 0 5%, rgba(255, 255, 255, .55) 6.2%, transparent 7.4% 12%),
+    linear-gradient(118deg, #ff5d7a, #ffd35d, #7dff9b, #5de0ff, #7d8bff, #e07dff, #ff5d7a, #ffd35d, #7dff9b);
+  background-size: 260% 260%, 320% 320%;
+  background-position: var(--hx) var(--hy), calc(100% - var(--hx)) calc(100% - var(--hy));
+  mix-blend-mode: color-dodge;
+  filter: saturate(1.35) brightness(.9);
+  opacity: calc(var(--o) * .46);
+}
+/* glare: a hot spot under the pointer, darkening toward the far edge */
+.holo__glare {
+  background: radial-gradient(farthest-corner circle at var(--hx) var(--hy), rgba(255, 255, 255, .85) 0, rgba(255, 255, 255, .3) 22%, rgba(0, 0, 0, .45) 95%);
+  mix-blend-mode: overlay;
+  opacity: calc(var(--o) * .75);
+}
+.holo--rare .holo__foil { opacity: calc(.14 + var(--o) * .5); }
+
+/* idle: every so often the card catches the light by itself */
+.js [data-stagger].is-in > .holo,
+.js .is-in > .unique .holo {
+  animation: bob 6s ease-in-out infinite, catch-light 9s 1.2s ease-in-out infinite;
+}
+.js [data-stagger].is-in > .holo:nth-child(3n + 2), .js .is-in > .unique:nth-child(2) .holo { animation-delay: -2s, 2.4s; }
+.js [data-stagger].is-in > .holo:nth-child(3n) { animation-delay: -4s, 3.6s; }
+.card-wall .holo { --bob: 0; }
+.js .card-wall.is-in > .holo { animation-name: none, catch-light; }
+.holo.is-active, .js [data-stagger].is-in > .holo.is-active, .js .is-in > .unique .holo.is-active { animation: none; }
+@keyframes catch-light {
+  0%, 26%, 100% { --o: 0; --hx: 0%; --hy: 20%; --rx: 0deg; --ry: 0deg; }
+  4% { --o: .9; --hx: 10%; --hy: 25%; --rx: 3deg; --ry: -7deg; }
+  13% { --o: 1; --hx: 60%; --hy: 55%; --rx: -2deg; --ry: 5deg; }
+  22% { --o: .7; --hx: 100%; --hy: 80%; --rx: 0deg; --ry: 8deg; }
+}
+
+/* layout of holo cards in their containers */
+.gallery .holo { flex: 0 1 calc(420px * var(--ar)); }
+.gallery--pets .holo { flex-basis: calc(320px * var(--ar)); }
+.card-wall .holo { width: 100%; }
+.unique .holo { width: 100%; }
+.unique .holo { filter: drop-shadow(0 0 22px rgba(120, 190, 255, .45)) drop-shadow(0 18px 26px rgba(0, 0, 0, .7)); }
+
+/* genesis items: same foil over the looping pack art */
+.item__media { position: relative; }
+.item .holo__foil { opacity: calc(var(--o) * .34); }
+.item .holo__glare { opacity: calc(var(--o) * .6); }
+.item.is-active { transition: transform .09s linear; }
+.item { transition: transform .6s cubic-bezier(.3, 1.5, .5, 1), opacity .7s, translate .7s cubic-bezier(.2, .7, .2, 1), border-color .25s, box-shadow .25s; }

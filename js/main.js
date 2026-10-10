@@ -36,20 +36,27 @@ const videoIO = new IntersectionObserver((entries) => {
 }, { threshold: 0.25 });
 document.querySelectorAll('video[data-autoplay]').forEach((v) => videoIO.observe(v));
 
-/* ---- card tilt ---- */
-if (finePointer && !reduceMotion) {
-  document.querySelectorAll('.tilt').forEach((el) => {
+/* ---- card tilt + holographic foil: the card leans toward the pointer and the foil follows it ---- */
+if (!reduceMotion) {
+  document.querySelectorAll('.tilt, .holo').forEach((el) => {
+    const max = el.classList.contains('holo') ? 18 : 12;
+    const reset = () => {
+      el.classList.remove('is-active');
+      for (const v of ['--rx', '--ry', '--hx', '--hy', '--o']) el.style.removeProperty(v);
+    };
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      el.style.setProperty('--ry', `${x * 14}deg`);
-      el.style.setProperty('--rx', `${-y * 14}deg`);
+      const x = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1);
+      const y = Math.min(Math.max((e.clientY - r.top) / r.height, 0), 1);
+      el.classList.add('is-active');
+      el.style.setProperty('--ry', `${((x - 0.5) * 2 * max).toFixed(2)}deg`);
+      el.style.setProperty('--rx', `${((0.5 - y) * 2 * max).toFixed(2)}deg`);
+      el.style.setProperty('--hx', `${(x * 100).toFixed(1)}%`);
+      el.style.setProperty('--hy', `${(y * 100).toFixed(1)}%`);
+      el.style.setProperty('--o', '1');
     });
-    el.addEventListener('pointerleave', () => {
-      el.style.removeProperty('--rx');
-      el.style.removeProperty('--ry');
-    });
+    el.addEventListener('pointerleave', reset);
+    el.addEventListener('pointercancel', reset);
   });
 }
 
