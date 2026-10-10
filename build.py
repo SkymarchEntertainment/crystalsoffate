@@ -281,7 +281,7 @@ FEATURES = [
 
 # Campaign region paintings from the game, shown in the battlegrounds gallery
 REALMS = [('realm-ashmyst-falls', 'Ashmyst Falls'), ('realm-daunting-narrows', 'Daunting Narrows'),
-          ('realm-deaths-summit', "Death's Summit"), ('realm-dragon-isle', 'Dragon Isle'),
+          ('realm-deaths-summit', "Death's Summit"), ('realm-dragon-isle-2', 'Dragon Isle'), ('realm-dragon-isle', 'Dragon Isle'),
           ('realm-fireridge-crater', 'Fireridge Crater'), ('realm-mordania', 'Mordania'),
           ('realm-piercing-sands', 'Piercing Sands'), ('realm-reapers-glade', "Reaper's Glade")]
 
