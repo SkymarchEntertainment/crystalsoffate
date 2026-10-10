@@ -115,11 +115,15 @@ function motes(hero, canvas, density, inner) {
       my = (e.clientY - r.top) / r.height - 0.5;
       inner?.style.setProperty('--px', `${-mx * 16}px`);
       inner?.style.setProperty('--py', `${-my * 10}px`);
+      inner?.style.setProperty('--lry', `${(mx * 16).toFixed(2)}deg`);
+      inner?.style.setProperty('--lrx', `${(-my * 12).toFixed(2)}deg`);
     });
     hero.addEventListener('pointerleave', () => {
       mx = my = 0;
       inner?.style.setProperty('--px', '0px');
       inner?.style.setProperty('--py', '0px');
+      inner?.style.setProperty('--lry', '0deg');
+      inner?.style.setProperty('--lrx', '0deg');
     });
   }
 

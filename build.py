@@ -1,4 +1,5 @@
 """Generates the static pages. Run: python build.py"""
+import hashlib
 import os
 from html import escape
 from PIL import Image
@@ -23,6 +24,12 @@ NAV = [('index.html', 'Home', 'home'), ('news.html', 'News', 'news'),
        ('media.html', 'Media', 'media')]
 SOCIAL = [(DISCORD, 'Discord', 'discord'), (TWITTER, 'Twitter', 'twitter'),
           (YOUTUBE, 'YouTube', 'youtube'), (TELEGRAM, 'Telegram', 'telegram')]
+
+
+def stamp(path):
+    """Content hash appended to CSS/JS URLs so browsers never show a stale copy."""
+    with open(os.path.join(ROOT, path), 'rb') as f:
+        return f'{path}?v={hashlib.md5(f.read()).hexdigest()[:8]}'
 
 
 def icon(name, cls=''):
@@ -93,7 +100,7 @@ def page(filename, title, active, main, desc=DESC, og='assets/img/og.jpg', prelo
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  {preload}<link rel="stylesheet" href="css/styles.css">
+  {preload}<link rel="stylesheet" href="{stamp('css/styles.css')}">
   <script>document.documentElement.className = 'js';</script>
 </head>
 <body class="page-{active or 'plain'}">
@@ -138,7 +145,7 @@ def page(filename, title, active, main, desc=DESC, og='assets/img/og.jpg', prelo
     <button class="lightbox__btn lightbox__next" aria-label="Next">{icon('chevron')}</button>
   </div>
 
-  <script src="js/main.js" defer onerror="document.documentElement.className=''"></script>
+  <script src="{stamp('js/main.js')}" defer onerror="document.documentElement.className=''"></script>
 </body>
 </html>
 '''
@@ -260,6 +267,7 @@ FEATURES = [
     ('Choose From Multiple Pets', 'bg-pets', 'pets', [('pet-nightmare', 'Nightmare pet'), ('pet-finley', 'Finley pet'), ('pet-hexx', 'Hexx pet')]),
     ('Choose Your Loadout', 'bg-battleground', 'tall', [('emote-celleste', 'Celleste emote'), ('emote-corvax', 'Corvax emote'), ('emote-zarah', 'Zarah emote')]),
 ]
+LOGO_X, LOGO_Y, LOGO_W, LOGO_H = 29.486, 6.071, 41.029, 58.534  # logo box, % of the 1672x873 scene
 SPARKS = [(50, 6.5, 0, 1.3), (35.3, 38, 1.1, 1), (41.3, 48, 2.3, .7), (58.9, 48, 3.1, .7), (41.6, 15.5, 1.7, .8),
           (58.6, 14, .6, .8), (50, 27, 2.8, 1.5), (64.6, 36, 3.7, .8), (46.2, 58.5, 4.3, .7), (30.5, 33, 4.9, .7)]
 
@@ -272,20 +280,28 @@ def home():
         <div class="gallery gallery--{kind}" data-stagger>{''.join(holo(f'assets/img/{n}.webp', a) for n, a in items)}</div>
       </div>
     </section>''' for title, bg, kind, items in FEATURES)
-    sparks = ''.join(f'<i style="--x:{x}%;--y:{y}%;--d:{d}s;--k:{k}"></i>' for x, y, d, k in SPARKS)
+    # SPARKS are placed in scene coordinates; the logo layer has its own box inside the scene
+    sparks = ''.join(f'<i style="--x:{(x - LOGO_X) / LOGO_W * 100:.1f}%;--y:{(y - LOGO_Y) / LOGO_H * 100:.1f}%;--d:{d}s;--k:{k}"></i>'
+                     for x, y, d, k in SPARKS)
     main = f'''    <section class="hero" aria-label="Crystals of Fate">
       <div class="hero__art">
         <div class="scene">
           <div class="scene__inner">
             <img class="scene__img" src="assets/img/hero.webp" width="1672" height="873" fetchpriority="high"
-                 alt="Crystals of Fate logo over a realm of floating castles and waterfalls">
+                 alt="A realm of floating castles and waterfalls">
             <div class="fx fx-water" aria-hidden="true"></div>
             <div class="fx fx-fog fx-fog--a" aria-hidden="true"></div>
             <div class="fx fx-fog fx-fog--b" aria-hidden="true"></div>
             <div class="fx fx-rays" aria-hidden="true"></div>
             <div class="fx fx-glow" aria-hidden="true"></div>
-            <div class="fx fx-shine" aria-hidden="true"></div>
-            <div class="fx fx-sparks" aria-hidden="true">{sparks}</div>
+            <div class="logo3d">
+              <div class="logo3d__body">
+                <img class="logo3d__img" src="assets/img/logo.webp" width="1448" height="1078" fetchpriority="high" alt="Crystals of Fate">
+                <div class="fx logo3d__glow" aria-hidden="true"></div>
+                <div class="fx fx-shine" aria-hidden="true"></div>
+                <div class="fx fx-sparks" aria-hidden="true">{sparks}</div>
+              </div>
+            </div>
             <div class="fx fx-flash" aria-hidden="true"></div>
           </div>
         </div>
@@ -329,7 +345,7 @@ def home():
       </div>
     </section>'''
     page('index.html', 'Crystals of Fate | A Greater World Awaits', 'home', main,
-         preload='<link rel="preload" as="image" href="assets/img/hero.webp">\n  ')
+         preload='<link rel="preload" as="image" href="assets/img/hero.webp"><link rel="preload" as="image" href="assets/img/logo.webp">\n  ')
 
 
 # ---------------------------------------------------------------- news

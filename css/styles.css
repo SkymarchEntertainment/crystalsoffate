@@ -1185,3 +1185,44 @@ a:hover > .more, a:hover .post-card__body .more { color: var(--gold-100); letter
 .item .holo__glare { opacity: calc(var(--o) * .6); }
 .item.is-active { transition: transform .09s linear; }
 .item { transition: transform .6s cubic-bezier(.3, 1.5, .5, 1), opacity .7s, translate .7s cubic-bezier(.2, .7, .2, 1), border-color .25s, box-shadow .25s; }
+
+/* ---------- Hero logo as its own layer ---------- */
+
+.logo3d {
+  position: absolute;
+  left: 29.486%;
+  top: 6.071%;
+  width: 41.029%;
+  aspect-ratio: 1448 / 1078;
+  perspective: 900px;
+  translate: calc(var(--px, 0px) * 1.5) calc(var(--py, 0px) * 1.5);
+  transition: translate .9s cubic-bezier(.2, .7, .2, 1);
+}
+.logo3d__body {
+  position: absolute;
+  inset: 0;
+  transform: translateY(var(--fy)) rotateX(var(--lrx, 0deg)) rotateY(var(--lry, 0deg));
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+  filter: drop-shadow(0 20px 26px rgba(0, 10, 40, .6)) drop-shadow(0 0 34px rgba(80, 160, 255, .5));
+  animation: logo-in 1.7s .3s cubic-bezier(.2, 1.25, .35, 1) both, logo-float 7s 2s ease-in-out infinite;
+  will-change: transform;
+}
+.logo3d__img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.logo3d__glow {
+  -webkit-mask: url(../assets/img/logo.webp) center / 100% 100% no-repeat;
+  mask: url(../assets/img/logo.webp) center / 100% 100% no-repeat;
+  background: radial-gradient(circle at 50% 42%, rgba(190, 235, 255, .85) 0, rgba(80, 160, 255, .4) 22%, transparent 48%);
+  mix-blend-mode: screen;
+  animation: pulse 4.5s ease-in-out infinite;
+}
+.logo3d .fx-sparks i { width: calc(5.6% * var(--k)); }
+.fx-rays {
+  -webkit-mask-image: radial-gradient(circle farthest-side at 50% 31%, #000 0, rgba(0, 0, 0, .6) 36%, transparent 72%);
+  mask-image: radial-gradient(circle farthest-side at 50% 31%, #000 0, rgba(0, 0, 0, .6) 36%, transparent 72%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
+}
+@keyframes logo-in { from { opacity: 0; scale: .5; translate: 0 -10%; } 60% { opacity: 1; } }
+@keyframes logo-float { 0%, 100% { --fy: -5px; rotate: -.5deg; } 50% { --fy: 7px; rotate: .5deg; } }
+
+.footer { overflow: hidden; }
