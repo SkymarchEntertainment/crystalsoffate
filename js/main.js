@@ -327,3 +327,75 @@ if (knight && !reduceMotion) {
   resize();
   sync();
 }
+
+/* ---- showcases: one item centre stage, neighbours waiting at the sides; swipe, drag, arrows or dots ---- */
+document.querySelectorAll('[data-showcase]').forEach((sc) => {
+  const track = sc.querySelector('.showcase__track');
+  const slides = [...track.children];
+  const dots = sc.querySelector('.showcase__dots');
+  const caption = sc.querySelector('.showcase__caption');
+  const name = caption.querySelector('strong');
+  const sub = caption.querySelector('small');
+  const n = slides.length;
+  let active = 0, timer = 0, touched = false;
+
+  slides.forEach(() => dots.append(document.createElement('i')));
+
+  function render() {
+    slides.forEach((slide, i) => {
+      let pos = ((i - active) % n + n) % n;
+      if (pos > n / 2) pos -= n;
+      slide.dataset.pos = Math.max(-2, Math.min(2, pos));
+      slide.classList.toggle('is-active', pos === 0);
+      slide.setAttribute('aria-hidden', String(pos !== 0));
+    });
+    [...dots.children].forEach((d, i) => d.classList.toggle('is-on', i === active));
+    caption.classList.remove('is-swap');
+    void caption.offsetWidth;             // restart the caption's entrance
+    caption.classList.add('is-swap');
+    name.textContent = slides[active].dataset.name;
+    sub.textContent = `${slides[active].dataset.sub}  ·  ${String(active + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}`;
+  }
+  const go = (to) => { active = ((to % n) + n) % n; render(); };
+  const user = (to) => { touched = true; clearInterval(timer); go(to); };
+
+  sc.querySelector('.showcase__nav--prev').addEventListener('click', () => user(active - 1));
+  sc.querySelector('.showcase__nav--next').addEventListener('click', () => user(active + 1));
+  sc.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') user(active - 1);
+    if (e.key === 'ArrowRight') user(active + 1);
+  });
+
+  // drag or swipe; a press that doesn't travel is a tap, and a tap on a side item brings it forward
+  let startX = null, dx = 0;
+  track.addEventListener('pointerdown', (e) => { startX = e.clientX; dx = 0; });
+  addEventListener('pointermove', (e) => {
+    if (startX === null) return;
+    dx = e.clientX - startX;
+    if (Math.abs(dx) > 6) track.style.setProperty('--drag', `${dx * 0.45}px`);
+  }, { passive: true });
+  const release = (e) => {
+    if (startX === null) return;
+    startX = null;
+    track.style.setProperty('--drag', '0px');
+    if (Math.abs(dx) > 40) {
+      user(active + (dx < 0 ? 1 : -1));
+    } else if (e.type === 'pointerup') {
+      const slide = e.target.closest?.('.slide');
+      if (slide && !slide.classList.contains('is-active')) user(slides.indexOf(slide));
+    }
+  };
+  addEventListener('pointerup', release);
+  addEventListener('pointercancel', release);
+
+  // turns by itself until someone takes over
+  if (!reduceMotion) {
+    new IntersectionObserver(([entry]) => {
+      clearInterval(timer);
+      if (entry.isIntersecting && !touched) timer = setInterval(() => { if (!document.hidden) go(active + 1); }, 4200);
+    }, { threshold: 0.5 }).observe(sc);
+  }
+
+  sc.classList.add('is-ready');
+  render();
+});

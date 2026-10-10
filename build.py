@@ -265,12 +265,40 @@ def post_card(p):
 
 # ---------------------------------------------------------------- home
 
+# Home showcases: (title, background, kind, [(image, name, subtitle)]). Each becomes a swipeable carousel.
 FEATURES = [
-    ('Choose Your Hero', 'bg-hero', 'tall', [('hero-celleste', 'Celleste hero card'), ('hero-davarok', 'Davarok hero card'), ('hero-saria', 'Saria hero card')]),
-    ('Choose Your Cards', 'bg-cards', 'tall', [('card-sylvana-allure', 'Sylvana Allure card'), ('card-dark-etheralite', 'Dark Etheralite card'), ('card-sprite-scout', 'Sprite Scout card')]),
-    ('Choose From Multiple Pets', 'bg-pets', 'pets', [('pet-nightmare', 'Nightmare pet'), ('pet-finley', 'Finley pet'), ('pet-hexx', 'Hexx pet')]),
-    ('Choose Your Loadout', 'bg-battleground', 'tall', [('emote-celleste', 'Celleste emote'), ('emote-corvax', 'Corvax emote'), ('emote-zarah', 'Zarah emote')]),
+    ('Choose Your Hero', 'bg-hero', 'tall', [
+        ('hero-celleste', 'Celleste', 'Guardian'), ('hero-davarok', 'Davarok', 'Warrior'), ('hero-saria', 'Saria', 'Assassin')]),
+    ('Choose Your Cards', 'bg-cards', 'tall', [
+        ('card-sylvana-allure', 'Sylvana Allure', 'Card'), ('card-dark-etheralite', 'Dark Etheralite', 'Card'),
+        ('card-sprite-scout', 'Sprite Scout', 'Card')]),
+    ('Choose From Multiple Pets', 'bg-pets', 'pets', [
+        ('pet-nightmare', 'Nightmare', 'Pet'), ('pet-finley', 'Finley', 'Pet'), ('pet-hexx', 'Hexx', 'Pet')]),
+    ('Choose Your Loadout', 'bg-battleground', 'tall', [
+        ('emote-celleste', 'Celleste', 'Emote'), ('emote-corvax', 'Corvax', 'Emote'), ('emote-zarah', 'Zarah', 'Emote')]),
 ]
+
+
+def showcase(title, kind, items):
+    slides = ''.join(
+        f'<li class="slide" data-name="{escape(n)}" data-sub="{escape(sub)}">{holo(f"assets/img/{f}.webp", f"{n} {sub.lower()}")}</li>'
+        for f, n, sub in items)
+    return f'''<div class="showcase showcase--{kind}" data-showcase data-reveal tabindex="0" role="group" aria-roledescription="carousel" aria-label="{title}">
+          <i class="showcase__corner"></i><i class="showcase__corner"></i><i class="showcase__corner"></i><i class="showcase__corner"></i>
+          <div class="showcase__beam" aria-hidden="true"></div>
+          <div class="showcase__stage">
+            <div class="showcase__pedestal" aria-hidden="true"></div>
+            <ul class="showcase__track">{slides}</ul>
+          </div>
+          <div class="showcase__bar">
+            <button class="showcase__nav showcase__nav--prev" type="button" aria-label="Previous">{icon('chevron')}</button>
+            <div class="showcase__caption" aria-live="polite"><strong></strong><small></small></div>
+            <button class="showcase__nav showcase__nav--next" type="button" aria-label="Next">{icon('chevron')}</button>
+          </div>
+          <div class="showcase__dots" aria-hidden="true"></div>
+        </div>'''
+
+
 # Hero scene layers, back to front. Position is % of the 1672x873 scene (left, top, width).
 # depth: how far the layer shifts with the pointer; scroll: how much it lags behind the page as it scrolls.
 # Scroll values stay >= 0: a layer that ran ahead of the page would lift its bottom edge into view.
@@ -310,7 +338,7 @@ def home():
     <section class="feature" style="--bg:url(../assets/img/{bg}.webp)">
       <div class="feature__inner">
         <h2 data-reveal>{title}</h2>{RULE}
-        <div class="gallery gallery--{kind}" data-stagger>{''.join(holo(f'assets/img/{n}.webp', a) for n, a in items)}</div>
+        {showcase(title, kind, items)}
       </div>
     </section>''' for title, bg, kind, items in FEATURES)
     # SPARKS are placed in scene coordinates; the logo layer has its own box inside the scene
