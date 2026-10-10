@@ -46,7 +46,8 @@ def img(path, alt, cls='', lazy=True):
     w, h = size(path)
     c = f' class="{cls}"' if cls else ''
     l = ' loading="lazy" decoding="async"' if lazy else ''
-    return f'<img{c} src="{path}" alt="{escape(alt)}" width="{w}" height="{h}"{l}>'
+    # stamped so a replaced image is fetched again instead of being served from the browser's cache
+    return f'<img{c} src="{stamp(path)}" alt="{escape(alt)}" width="{w}" height="{h}"{l}>'
 
 
 def holo(path, alt, cls=''):
