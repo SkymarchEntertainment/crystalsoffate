@@ -1295,3 +1295,48 @@ a:hover > .more, a:hover .post-card__body .more { color: var(--gold-100); letter
   .sound[data-state="playing"] .sound__bars i { scale: 1 .7; }
   .sound[data-state="playing"] .sound__bars i:nth-child(2n) { scale: 1 1; }
 }
+
+/* ---------- Hero parallax layers ---------- */
+
+.layer {
+  position: absolute;
+  translate:
+    calc(var(--px, 0px) * var(--d, 1))
+    calc(var(--py, 0px) * var(--d, 1) + var(--sy, 0) * var(--s, 0) * 1px);
+  transition: translate .7s cubic-bezier(.2, .7, .2, 1);
+  pointer-events: none;
+  will-change: translate;
+}
+.layer__in { position: relative; animation: layer-in 1.8s cubic-bezier(.2, .8, .2, 1) both; }
+.layer img { display: block; width: 100%; height: auto; max-width: none; }
+@keyframes layer-in { from { opacity: 0; translate: var(--ix, 0) var(--iy, 0); scale: var(--is, 1); } }
+
+.layer--clouds .layer__in { animation-duration: 3s; animation-delay: .5s; }
+.layer--clouds img { animation: cloud-drift 46s ease-in-out infinite alternate; }
+.layer--clouds-back { opacity: .7; }
+.layer--clouds-back img { scale: -1 1; animation-duration: 64s; animation-direction: alternate-reverse; }
+@keyframes cloud-drift { from { translate: -3.2% 0; } to { translate: 3.2% 0; } }
+
+.layer--island .layer__in { --iy: -40%; animation-delay: .9s; }
+.layer--island img { animation: island 8s ease-in-out infinite; }
+.layer--island-b img { animation-duration: 9.5s; animation-delay: -3s; }
+.layer--island-c img { animation-duration: 11s; animation-delay: -5s; filter: drop-shadow(0 0 14px rgba(110, 180, 255, .75)); }
+.layer--island-a img { animation-duration: 7s; animation-delay: -2s; }
+@keyframes island { 0%, 100% { translate: 0 -3.5%; rotate: -.8deg; } 50% { translate: 0 3.5%; rotate: .8deg; } }
+
+.layer--castle .layer__in { --iy: 7%; animation-delay: .15s; }
+.layer--arch .layer__in { --ix: -14%; animation-delay: .45s; }
+.layer--foliage .layer__in { --is: 1.2; animation-delay: .6s; transform-origin: 50% 100%; }
+.layer--foliage img { transform-origin: 0 100%; animation: sway 9s ease-in-out infinite; }
+@keyframes sway { 0%, 100% { rotate: -.35deg; } 50% { rotate: .45deg; } }
+
+/* the back plate is now only sky, so it can come in plainly */
+.scene__img { animation: fx-in 1.4s ease-out both; }
+
+/* dusk haze behind the tagline and buttons so they read against the bright cliffs */
+.fx-shade {
+  background: radial-gradient(ellipse 36% 31% at 50% 85%, rgba(5, 12, 38, .86), rgba(5, 12, 38, .62) 52%, rgba(5, 12, 38, 0));
+  animation: fx-in 2s .8s both;
+}
+.hero__tagline { text-shadow: 0 2px 16px rgba(0, 8, 34, .95), 0 0 34px rgba(0, 8, 34, .8), 0 0 2px rgba(0, 0, 0, .7); }
+.hero__pillars, .hero__motto p { text-shadow: 0 1px 10px rgba(0, 8, 34, .95), 0 0 20px rgba(0, 8, 34, .8); }

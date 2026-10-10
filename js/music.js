@@ -35,8 +35,8 @@
     const from = audio.volume;
     const t0 = performance.now();
     const step = (t) => {
-      const k = Math.min((t - t0) / 900, 1);
-      audio.volume = from + (target - from) * k;
+      const k = Math.min(Math.max((t - t0) / 900, 0), 1);
+      audio.volume = Math.min(Math.max(from + (target - from) * k, 0), 1);
       if (k < 1) fade = requestAnimationFrame(step);
       else then?.();
     };

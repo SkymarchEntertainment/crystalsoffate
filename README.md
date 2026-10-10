@@ -24,15 +24,16 @@ python build.py
 
 To add a news post, add an entry to `POSTS` and its body to `POST_BODY` in `build.py`.
 
-## Hero animation
+## Hero scene
 
-`assets/img/hero.webp` is the key art with the logo painted in. The motion is layered on top of it in CSS and a canvas:
+The hero is built from separate layers so they can move at different depths. Back to front: sky plate (`hero.webp`), far clouds, floating islands, castle, near clouds, logo, stone arch, foreground foliage.
 
-- `mask-logo.png` limits the shine sweep to the gold lettering and keeps the light rays behind it
-- `mask-water.png` limits the falling shimmer to the waterfalls
+- Layer positions, pointer depth and scroll drift are set in `LAYERS` in `build.py`
+- `logo.webp` tilts toward the pointer; `mask-logo.png` limits its shine sweep to the gold lettering
+- `mask-water.png` limits the falling shimmer to the castle's waterfalls
 - `.hero__motes` canvas draws the drifting motes and petals
 
-All of it is disabled under `prefers-reduced-motion`.
+All motion is disabled under `prefers-reduced-motion`.
 
 ## Music
 

@@ -271,6 +271,32 @@ FEATURES = [
     ('Choose From Multiple Pets', 'bg-pets', 'pets', [('pet-nightmare', 'Nightmare pet'), ('pet-finley', 'Finley pet'), ('pet-hexx', 'Hexx pet')]),
     ('Choose Your Loadout', 'bg-battleground', 'tall', [('emote-celleste', 'Celleste emote'), ('emote-corvax', 'Corvax emote'), ('emote-zarah', 'Zarah emote')]),
 ]
+# Hero scene layers, back to front. Position is % of the 1672x873 scene (left, top, width).
+# depth: how far the layer shifts with the pointer; scroll: how it drifts as the page scrolls (+ lags behind, - runs ahead).
+LAYERS = {
+    'clouds-back': dict(img='layer-clouds', pos=(-8, 18, 116), depth=.3, scroll=.16),
+    'island-d': dict(img='layer-island-d', pos=(26.5, 7, 3.2), depth=.4, scroll=.24),
+    'island-b': dict(img='layer-island-b', pos=(76.5, 5, 7.5), depth=.5, scroll=.22),
+    'island-c': dict(img='layer-island-c', pos=(86, 4, 11), depth=.7, scroll=.2),
+    'island-a': dict(img='layer-island-a', pos=(93, 44, 5), depth=.6, scroll=.2),
+    'castle': dict(img='layer-castle', pos=(9, -3, 100), depth=.9, scroll=.1, inner='<div class="fx fx-water"></div>'),
+    'clouds-front': dict(img='layer-clouds', pos=(-8, 38, 116), depth=1.6, scroll=.03),
+    'arch': dict(img='layer-arch', pos=(-3, -14, 46), depth=2.6, scroll=-.06),
+    'foliage': dict(img='layer-foliage', pos=(-3, -9, 106), depth=4.2, scroll=-.14),
+}
+
+
+def layer(key):
+    l = LAYERS[key]
+    left, top, width = l['pos']
+    w, h = size(f"assets/img/{l['img']}.webp")
+    kind = key.split('-')[0]
+    return (f'<div class="layer layer--{kind} layer--{key}" aria-hidden="true" '
+            f'style="left:{left}%;top:{top}%;width:{width}%;--d:{l["depth"]};--s:{l["scroll"]}">'
+            f'<div class="layer__in"><img src="assets/img/{l["img"]}.webp" alt="" width="{w}" height="{h}" decoding="async">'
+            f'{l.get("inner", "")}</div></div>')
+
+
 LOGO_X, LOGO_Y, LOGO_W, LOGO_H = 29.486, 6.071, 41.029, 58.534  # logo box, % of the 1672x873 scene
 SPARKS = [(50, 6.5, 0, 1.3), (35.3, 38, 1.1, 1), (41.3, 48, 2.3, .7), (58.9, 48, 3.1, .7), (41.6, 15.5, 1.7, .8),
           (58.6, 14, .6, .8), (50, 27, 2.8, 1.5), (64.6, 36, 3.7, .8), (46.2, 58.5, 4.3, .7), (30.5, 33, 4.9, .7)]
@@ -287,15 +313,16 @@ def home():
     # SPARKS are placed in scene coordinates; the logo layer has its own box inside the scene
     sparks = ''.join(f'<i style="--x:{(x - LOGO_X) / LOGO_W * 100:.1f}%;--y:{(y - LOGO_Y) / LOGO_H * 100:.1f}%;--d:{d}s;--k:{k}"></i>'
                      for x, y, d, k in SPARKS)
-    main = f'''    <section class="hero" aria-label="Crystals of Fate">
+    main = f'''    <section class="hero" aria-label="Crystals of Fate: a castle of waterfalls among floating islands">
       <div class="hero__art">
         <div class="scene">
           <div class="scene__inner">
-            <img class="scene__img" src="assets/img/hero.webp" width="1672" height="873" fetchpriority="high"
-                 alt="A realm of floating castles and waterfalls">
-            <div class="fx fx-water" aria-hidden="true"></div>
+            <img class="scene__img" src="assets/img/hero.webp" width="1672" height="873" fetchpriority="high" alt="">
+            {''.join(layer(k) for k in ('clouds-back', 'island-d', 'island-b', 'island-c', 'island-a', 'castle'))}
             <div class="fx fx-fog fx-fog--a" aria-hidden="true"></div>
             <div class="fx fx-fog fx-fog--b" aria-hidden="true"></div>
+            {layer('clouds-front')}
+            <div class="fx fx-shade" aria-hidden="true"></div>
             <div class="fx fx-rays" aria-hidden="true"></div>
             <div class="fx fx-glow" aria-hidden="true"></div>
             <div class="logo3d">
@@ -306,6 +333,8 @@ def home():
                 <div class="fx fx-sparks" aria-hidden="true">{sparks}</div>
               </div>
             </div>
+            {layer('arch')}
+            {layer('foliage')}
             <div class="fx fx-flash" aria-hidden="true"></div>
           </div>
         </div>

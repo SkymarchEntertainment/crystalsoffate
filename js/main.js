@@ -228,6 +228,7 @@ function onScroll() {
   ticking = false;
   const max = root.scrollHeight - innerHeight;
   root.style.setProperty('--progress', max > 0 ? (scrollY / max).toFixed(4) : '0');
+  if (!reduceMotion) root.style.setProperty('--sy', Math.min(scrollY, 1400).toFixed(0));
   root.classList.toggle('is-scrolled', scrollY > 40);
   root.classList.toggle('is-deep', scrollY > 700);
 }
