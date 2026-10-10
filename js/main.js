@@ -268,3 +268,62 @@ if (title && !reduceMotion) {
     if (n < all.length - 1) title.append(' ');
   });
 }
+
+/* ---- knight's cape: the image is redrawn in thin vertical strips, each lifted by a wave that
+        travels from his shoulders out to the cape's free edge. Left of ATTACH the picture is only cape. ---- */
+const knight = document.querySelector('.layer--knight');
+if (knight && !reduceMotion) {
+  const img = knight.querySelector('img');
+  const canvas = knight.querySelector('.cape');
+  const ctx = canvas.getContext('2d');
+  const ATTACH = 0.6;   // fraction of the width where the cape meets his back
+  const STRIP = 2;      // device px per strip
+  let w = 0, h = 0, running = false, onScreen = true;
+
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect();
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    w = Math.max(1, Math.round(r.width * dpr));
+    h = Math.max(1, Math.round(r.height * dpr));
+    canvas.width = w;
+    canvas.height = h;
+  }
+
+  function frame(t) {
+    if (!running) return;
+    const time = t / 1000;
+    const gust = 0.75 + 0.25 * Math.sin(time * 0.45);
+    const edge = Math.round(w * ATTACH);
+    const sx = img.naturalWidth / w;
+    ctx.clearRect(0, 0, w, h);
+    // body, sword and the cloth against his back stay still
+    ctx.drawImage(img, edge * sx, 0, img.naturalWidth - edge * sx, img.naturalHeight, edge, 0, w - edge, h);
+    for (let x = 0; x < edge; x += STRIP) {
+      const far = 1 - x / edge;                      // 0 at his back, 1 at the cape's tip
+      const amp = Math.pow(far, 1.5) * 0.034 * h * gust;
+      const phase = far * 7.5 - time * 3.1;
+      const lift = (Math.sin(phase) * 0.7 + Math.sin(phase * 2.3 + 1.1 + time * 0.8) * 0.3) * amp;
+      const stretch = 1 + Math.cos(phase) * 0.018 * far;
+      const sw = Math.min(STRIP, edge - x);
+      ctx.drawImage(img, x * sx, 0, sw * sx, img.naturalHeight, x, lift + (1 - stretch) * h * 0.55, sw + 0.6, h * stretch);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function sync() {
+    const should = onScreen && !document.hidden && img.complete && img.naturalWidth > 0;
+    if (should && !running) {
+      running = true;
+      knight.classList.add('is-live');
+      requestAnimationFrame(frame);
+    } else if (!should) {
+      running = false;
+    }
+  }
+  new ResizeObserver(resize).observe(canvas.parentElement);
+  new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; sync(); }).observe(knight);
+  document.addEventListener('visibilitychange', sync);
+  img.addEventListener('load', () => { resize(); sync(); });
+  resize();
+  sync();
+}

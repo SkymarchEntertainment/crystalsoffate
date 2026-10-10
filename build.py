@@ -282,6 +282,8 @@ LAYERS = {
     'castle': dict(img='layer-castle', pos=(9, -3, 100), depth=.9, scroll=.1, inner='<div class="fx fx-water"></div>'),
     'clouds-front': dict(img='layer-clouds', pos=(-8, 38, 116), depth=1.6, scroll=.03),
     'arch': dict(img='layer-arch', pos=(-3, -14, 46), depth=2.6, scroll=-.06),
+    # the knight shares the arch's depth so he stays planted on the wall
+    'knight': dict(img='layer-knight', pos=(13.8, 47.9, 10.5), depth=2.6, scroll=-.06, inner='<canvas class="cape"></canvas>'),
     'foliage': dict(img='layer-foliage', pos=(-3, -9, 106), depth=4.2, scroll=-.14),
 }
 
@@ -334,6 +336,7 @@ def home():
               </div>
             </div>
             {layer('arch')}
+            {layer('knight')}
             {layer('foliage')}
             <div class="fx fx-flash" aria-hidden="true"></div>
           </div>
