@@ -337,7 +337,8 @@ document.querySelectorAll('[data-showcase]').forEach((sc) => {
   const name = caption.querySelector('strong');
   const sub = caption.querySelector('small');
   const n = slides.length;
-  let active = 0, timer = 0, touched = false;
+  const backdrop = sc.closest('.feature')?.querySelectorAll('.feature__backdrop i');
+  let active = 0, timer = 0, touched = false, flip = 0;
 
   slides.forEach(() => dots.append(document.createElement('i')));
 
@@ -350,6 +351,13 @@ document.querySelectorAll('[data-showcase]').forEach((sc) => {
       slide.setAttribute('aria-hidden', String(pos !== 0));
     });
     [...dots.children].forEach((d, i) => d.classList.toggle('is-on', i === active));
+    if (backdrop?.length) {
+      // the section behind the gallery takes on the painting in front, cross-fading between two layers
+      flip = 1 - flip;
+      backdrop[flip].style.backgroundImage = `url("${slides[active].querySelector('img').src}")`;
+      backdrop[flip].classList.add('is-on');
+      backdrop[1 - flip].classList.remove('is-on');
+    }
     caption.classList.remove('is-swap');
     void caption.offsetWidth;             // restart the caption's entrance
     caption.classList.add('is-swap');

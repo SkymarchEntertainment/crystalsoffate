@@ -279,9 +279,20 @@ FEATURES = [
 ]
 
 
+# Campaign region paintings from the game, shown in the battlegrounds gallery
+REALMS = [('realm-ashmyst-falls', 'Ashmyst Falls'), ('realm-daunting-narrows', 'Daunting Narrows'),
+          ('realm-deaths-summit', "Death's Summit"), ('realm-dragon-isle', 'Dragon Isle'),
+          ('realm-fireridge-crater', 'Fireridge Crater'), ('realm-mordania', 'Mordania'),
+          ('realm-piercing-sands', 'Piercing Sands'), ('realm-reapers-glade', "Reaper's Glade")]
+
+
 def showcase(title, kind, items):
+    def slide(f, n, sub):
+        path = f'assets/img/{f}.webp'
+        # wide showcases frame a landscape painting; the others hold a card with holographic foil
+        return img(path, n, 'slide__art') if kind == 'wide' else holo(path, f'{n} {sub.lower()}')
     slides = ''.join(
-        f'<li class="slide" data-name="{escape(n)}" data-sub="{escape(sub)}">{holo(f"assets/img/{f}.webp", f"{n} {sub.lower()}")}</li>'
+        f'<li class="slide" data-name="{escape(n)}" data-sub="{escape(sub)}">{slide(f, n, sub)}</li>'
         for f, n, sub in items)
     return f'''<div class="showcase showcase--{kind}" data-showcase data-reveal tabindex="0" role="group" aria-roledescription="carousel" aria-label="{title}">
           <i class="showcase__corner"></i><i class="showcase__corner"></i><i class="showcase__corner"></i><i class="showcase__corner"></i>
@@ -383,10 +394,12 @@ def home():
       </div>
     </section>
 
-    <section class="feature feature--intro" style="--bg:url(../assets/img/bg-battleground.webp)">
+    <section class="feature feature--intro feature--realms" style="--bg:url(../assets/img/bg-battleground.webp)">
+      <div class="feature__backdrop" aria-hidden="true"><i></i><i></i></div>
       <div class="feature__inner">
         <h2 data-reveal>Battle In Immersive Battlegrounds</h2>{RULE}
         <p data-reveal>A multi-platform collectible card game with real-time, simultaneous, interactive gameplay.</p>
+        {showcase('Battlegrounds', 'wide', [(f, n, 'Realm') for f, n in REALMS])}
       </div>
     </section>
 {feats}

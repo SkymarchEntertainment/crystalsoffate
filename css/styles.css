@@ -1496,3 +1496,48 @@ a:hover > .more, a:hover .post-card__body .more { color: var(--gold-100); letter
 .showcase__dots { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
 .showcase__dots i { width: 8px; height: 8px; rotate: 45deg; border: 1px solid var(--gold-300); transition: background .3s, scale .3s, box-shadow .3s; }
 .showcase__dots i.is-on { background: var(--gold-100); scale: 1.35; box-shadow: 0 0 10px rgba(240, 205, 120, .9); }
+
+/* ---------- Battlegrounds gallery: wide paintings, with the section behind taking on the one in front ---------- */
+
+.feature--realms { overflow: hidden; }
+.feature__backdrop, .feature__backdrop i { position: absolute; inset: 0; }
+.feature__backdrop i {
+  inset: -6%;
+  background: center / cover no-repeat;
+  filter: blur(22px) brightness(.5) saturate(1.15);
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+.feature__backdrop i.is-on { opacity: 1; }
+.feature__backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--navy-900) 0, rgba(5, 10, 24, .25) 26%, rgba(5, 10, 24, .25) 74%, var(--navy-900) 100%);
+}
+.feature--realms .feature__inner { position: relative; }
+
+.showcase--wide {
+  --w: min(760px, 80vw);
+  max-width: 1180px;
+  background: linear-gradient(180deg, rgba(8, 14, 34, .5), rgba(4, 7, 18, .72));
+}
+.showcase--wide .showcase__stage { height: calc(var(--w) * .5625 + 30px); }
+.showcase--wide .showcase__pedestal { width: min(80%, 700px); height: 46px; opacity: .6; }
+.showcase--wide .showcase__beam { display: none; }
+.showcase--wide .showcase__track { gap: 2%; }
+.slide__art {
+  width: var(--w);
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid rgba(240, 205, 120, .75);
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px rgba(4, 7, 18, .8), 0 0 0 5px rgba(240, 205, 120, .3), 0 26px 46px rgba(0, 0, 0, .7);
+}
+.showcase--wide .slide.is-active .slide__art { animation: realm 16s ease-in-out infinite alternate; }
+@keyframes realm { from { object-position: 42% 50%; } to { object-position: 58% 50%; } }
+.showcase--wide.is-ready .slide[data-pos="-1"] { transform: translateX(-56%) translateZ(-200px) rotateY(30deg) scale(.8); }
+.showcase--wide.is-ready .slide[data-pos="1"] { transform: translateX(56%) translateZ(-200px) rotateY(-30deg) scale(.8); }
+.showcase--wide.is-ready .slide[data-pos="-2"] { transform: translateX(-100%) translateZ(-380px) rotateY(36deg) scale(.6); }
+.showcase--wide.is-ready .slide[data-pos="2"] { transform: translateX(100%) translateZ(-380px) rotateY(-36deg) scale(.6); }
