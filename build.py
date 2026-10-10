@@ -103,6 +103,7 @@ def page(filename, title, active, main, desc=DESC, og='assets/img/og.jpg', prelo
         <a class="signup" href="{DISCORD}" target="_blank" rel="noopener"><span>Sign Up</span></a>
       </div>
     </div>
+    <span class="nav__progress" aria-hidden="true"></span>
   </header>
 
   <main id="main">
@@ -118,6 +119,8 @@ def page(filename, title, active, main, desc=DESC, og='assets/img/og.jpg', prelo
     </nav>
     <p class="footer__copy">&copy; <span id="year">2026</span> Skymarch Entertainment Inc.</p>
   </footer>
+
+  <a class="to-top" href="#top" aria-label="Back to top">{icon('chevron')}</a>
 
   <div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
     <button class="lightbox__btn lightbox__close" aria-label="Close">{icon('close')}</button>
@@ -139,6 +142,7 @@ def banner(name, title, kicker=''):
     k = f'<p class="page-hero__kicker">{kicker}</p>' if kicker else ''
     return f'''    <section class="page-hero">
       <div class="page-hero__art" style="background-image:url(assets/img/banner-{name}.webp)"></div>
+      <canvas class="motes" data-motes="0.6" aria-hidden="true"></canvas>
       <div class="page-hero__inner">{k}<h1>{title}</h1>{RULE}</div>
     </section>'''
 
@@ -308,6 +312,7 @@ def home():
     </section>
 
     <section class="feature feature--cta" id="download" style="--bg:url(../assets/img/bg-cards.webp)">
+      <canvas class="motes" data-motes="0.8" aria-hidden="true"></canvas>
       <div class="feature__inner">
         <h2 data-reveal>Battle For Glory</h2>{RULE}
         <p data-reveal>Download and play today.</p>

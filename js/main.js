@@ -24,6 +24,8 @@ const revealIO = new IntersectionObserver((entries) => {
     revealIO.unobserve(entry.target);
   }
 }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+document.querySelectorAll('.prose:not(.prose--legal) > :is(h2, h3, p, ul, .shot), .feature .rule, .page-hero .rule')
+  .forEach((el) => el.setAttribute('data-reveal', ''));
 document.querySelectorAll('[data-reveal], [data-stagger]').forEach((el) => revealIO.observe(el));
 
 const videoIO = new IntersectionObserver((entries) => {
@@ -93,12 +95,9 @@ if (lightbox && shots.length) {
   });
 }
 
-/* ---- hero scene: pointer parallax, drifting motes and petals ---- */
-const hero = document.querySelector('.hero');
-if (hero && !reduceMotion) {
-  const art = hero.querySelector('.hero__art');
-  const inner = hero.querySelector('.scene__inner');
-  const canvas = hero.querySelector('.hero__motes');
+/* ---- drifting motes and petals, with pointer parallax on the hero scene ---- */
+function motes(hero, canvas, density, inner) {
+  const art = canvas.parentElement;
   const ctx = canvas.getContext('2d');
   let w = 0, h = 0, dpr = 1, running = false, last = 0, mx = 0, my = 0;
 
@@ -107,13 +106,13 @@ if (hero && !reduceMotion) {
       const r = art.getBoundingClientRect();
       mx = (e.clientX - r.left) / r.width - 0.5;
       my = (e.clientY - r.top) / r.height - 0.5;
-      inner.style.setProperty('--px', `${-mx * 16}px`);
-      inner.style.setProperty('--py', `${-my * 10}px`);
+      inner?.style.setProperty('--px', `${-mx * 16}px`);
+      inner?.style.setProperty('--py', `${-my * 10}px`);
     });
     hero.addEventListener('pointerleave', () => {
       mx = my = 0;
-      inner.style.setProperty('--px', '0px');
-      inner.style.setProperty('--py', '0px');
+      inner?.style.setProperty('--px', '0px');
+      inner?.style.setProperty('--py', '0px');
     });
   }
 
@@ -139,9 +138,9 @@ if (hero && !reduceMotion) {
     w = r.width; h = r.height;
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
-    const motes = Math.round(Math.min(90, w / 16));
-    const petals = Math.round(Math.min(16, w / 90));
-    parts = [...Array.from({ length: motes }, () => mote(true)), ...Array.from({ length: petals }, () => petal(true))];
+    const nMotes = Math.round(Math.min(90, w / 16) * density);
+    const nPetals = Math.round(Math.min(16, w / 90) * density);
+    parts = [...Array.from({ length: nMotes }, () => mote(true)), ...Array.from({ length: nPetals }, () => petal(true))];
   }
 
   function frame(t) {
@@ -203,4 +202,57 @@ if (hero && !reduceMotion) {
   document.addEventListener('visibilitychange', sync);
   resize();
   sync();
+}
+
+if (!reduceMotion) {
+  const hero = document.querySelector('.hero');
+  if (hero) motes(hero, hero.querySelector('.hero__motes'), 1, hero.querySelector('.scene__inner'));
+  document.querySelectorAll('canvas[data-motes]').forEach((c) => motes(c.parentElement, c, Number(c.dataset.motes)));
+}
+
+/* ---- scroll progress, back to top ---- */
+const root = document.documentElement;
+let ticking = false;
+function onScroll() {
+  ticking = false;
+  const max = root.scrollHeight - innerHeight;
+  root.style.setProperty('--progress', max > 0 ? (scrollY / max).toFixed(4) : '0');
+  root.classList.toggle('is-scrolled', scrollY > 40);
+  root.classList.toggle('is-deep', scrollY > 700);
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
+
+/* ---- pointer spotlight on cards ---- */
+if (finePointer) {
+  document.addEventListener('pointermove', (e) => {
+    const card = e.target.closest?.('.post-card, .item, .brand-tile, .channel, .market, .shot');
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    card.style.setProperty('--my', `${e.clientY - r.top}px`);
+  }, { passive: true });
+}
+
+/* ---- page title: letters rise in one by one ---- */
+const title = document.querySelector('.page-hero h1');
+if (title && !reduceMotion) {
+  const text = title.textContent;
+  let i = 0;
+  title.setAttribute('aria-label', text);
+  title.textContent = '';
+  text.split(' ').forEach((word, n, all) => {
+    const w = document.createElement('span');
+    w.className = 'word';
+    w.setAttribute('aria-hidden', 'true');
+    for (const ch of word) {
+      const c = document.createElement('span');
+      c.className = 'ch';
+      c.style.setProperty('--i', i++);
+      c.textContent = ch;
+      w.append(c);
+    }
+    title.append(w);
+    if (n < all.length - 1) title.append(' ');
+  });
 }
