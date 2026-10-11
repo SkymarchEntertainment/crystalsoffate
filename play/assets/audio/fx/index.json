@@ -1,0 +1,790 @@
+{
+ "mind_corruption_spell": {
+  "src": "Assets/Audio/Battle Sounds/Spells/mind_corruption_spell.wav",
+  "len": 3.2
+ },
+ "arcane_torrent": {
+  "src": "Assets/Audio/Battle Sounds/Spells/arcane_torrent.wav",
+  "len": 2.32
+ },
+ "sfx_lightmagic_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_LightMagic_01.wav",
+  "len": 1.025
+ },
+ "item_used": {
+  "src": "Assets/Audio/Battle Sounds/Items/item_used.wav",
+  "len": 1.664
+ },
+ "archmage_vhaldrath_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Archmage Vhaldrath/archmage_vhaldrath_intro.wav",
+  "len": 2.813
+ },
+ "arcane_spell_sound": {
+  "src": "Assets/Audio/Battle Sounds/Spells/arcane_spell_sound.wav",
+  "len": 2.345
+ },
+ "creatured_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/creatured_placed.wav",
+  "len": 1.212
+ },
+ "arena_gladiator_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Arena Gladiator/arena_gladiator_placed.wav",
+  "len": 1.585
+ },
+ "sfx_spawn_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Spawn_01.wav",
+  "len": 1.023
+ },
+ "armageddon": {
+  "src": "Assets/Audio/Battle Sounds/Spells/armageddon.wav",
+  "len": 3.581
+ },
+ "lilly_hello": {
+  "src": "Assets/BundleData/Audio/VO/Lilly Goldheart/lilly_hello.wav",
+  "len": 0.754
+ },
+ "draw_card_ph": {
+  "src": "Assets/Audio/Battle Sounds/draw_card_ph.wav",
+  "len": 3.225
+ },
+ "normal_attack": {
+  "src": "Assets/Audio/Battle Sounds/normal_attack.wav",
+  "len": 0.875
+ },
+ "lilly_taunt": {
+  "src": "Assets/BundleData/Audio/VO/Lilly Goldheart/lilly_taunt.wav",
+  "len": 2.607
+ },
+ "sfx_hit_03": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Hit_03.wav",
+  "len": 0.493
+ },
+ "ambush_spell": {
+  "src": "Assets/Audio/Battle Sounds/ambush_spell.wav",
+  "len": 1.771
+ },
+ "sfx_darkhit_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_DarkHit_01.wav",
+  "len": 1.047
+ },
+ "ghorvast_ref": {
+  "src": "Assets/Audio/Battle Sounds/Spells/Ghorvast's Greed/Ghorvast_Ref.wav",
+  "len": 1.903
+ },
+ "reward_gold": {
+  "src": "Assets/Audio/UI Sounds/reward_gold.mp3",
+  "len": 1.027
+ },
+ "beginning_of_holy": {
+  "src": "Assets/Audio/Battle Sounds/Beginning of Holy.wav",
+  "len": 2.389
+ },
+ "manaburst": {
+  "src": "Assets/Audio/Extra/manaburst.ogg",
+  "len": 1.271
+ },
+ "shimmering_finish": {
+  "src": "Assets/Audio/Battle Sounds/Spells/shimmering_finish.wav",
+  "len": 4.944
+ },
+ "teleport_spell": {
+  "src": "Assets/Audio/Battle Sounds/Spells/teleport_spell.wav",
+  "len": 2.795
+ },
+ "aveena_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Aveena Moonfrost/aveena_placed.wav",
+  "len": 2.793
+ },
+ "aveena_impact": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Aveena Moonfrost/aveena_impact.wav",
+  "len": 2.24
+ },
+ "explore_intro": {
+  "src": "Assets/Audio/Battle Sounds/Intros/explore_intro.wav",
+  "len": 4.416
+ },
+ "azalon_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Azalon The Phoenix Lord/azalon_placed.wav",
+  "len": 1.998
+ },
+ "fire_wrapped_around": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Azalon The Phoenix Lord/fire_wrapped_around.wav",
+  "len": 3.527
+ },
+ "flare_shine": {
+  "src": "Assets/Audio/Battle Sounds/Spells/flare_shine.wav",
+  "len": 2.501
+ },
+ "azzanox_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Azzanox/azzanox_intro.wav",
+  "len": 3.413
+ },
+ "korthanis_effect": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Korthanis/korthanis_effect.wav",
+  "len": 3.72
+ },
+ "aveena_hello": {
+  "src": "Assets/BundleData/Audio/VO/Aveena Moonfrost/aveena_hello.wav",
+  "len": 1.176
+ },
+ "mystery_intro": {
+  "src": "Assets/Audio/Battle Sounds/Intros/mystery_intro.wav",
+  "len": 2.926
+ },
+ "attack_up": {
+  "src": "Assets/Audio/Battle Sounds/attack_up.wav",
+  "len": 1.707
+ },
+ "sfx_explode_05": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Explode_05.wav",
+  "len": 1.254
+ },
+ "saria_stealth_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Saria Shadowblade/saria_stealth_intro.wav",
+  "len": 1.932
+ },
+ "blade_dancer_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Blade Dancer/blade_dancer_placed.wav",
+  "len": 2.811
+ },
+ "essence": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Essence.wav",
+  "len": 2.408
+ },
+ "blazing_phoenix_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Blazing Phoenix/blazing_phoenix_placed.wav",
+  "len": 2
+ },
+ "bone_dragon_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Bone Dragon/bone_dragon_placed.wav",
+  "len": 2.563
+ },
+ "dark_transition": {
+  "src": "Assets/Audio/Battle Sounds/Dark_Transition.wav",
+  "len": 4.949
+ },
+ "captain_rynar_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Captain Rynar/captain_rynar_placed.wav",
+  "len": 1.441
+ },
+ "dragon_placed_on_field": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/dragon_placed_on_field.wav",
+  "len": 2.731
+ },
+ "heavycreature_place": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/heavycreature_place.wav",
+  "len": 2.511
+ },
+ "aveena_taunt": {
+  "src": "Assets/BundleData/Audio/VO/Aveena Moonfrost/aveena_taunt.wav",
+  "len": 3.242
+ },
+ "magic_effect_02": {
+  "src": "Assets/Audio/Battle Sounds/Spells/magic_effect_02.wav",
+  "len": 3.145
+ },
+ "equipping_item_reference": {
+  "src": "Assets/Audio/Battle Sounds/Items/equipping_item_reference.wav",
+  "len": 0.809
+ },
+ "dark_magic": {
+  "src": "Assets/Audio/Battle Sounds/dark_magic.wav",
+  "len": 3.022
+ },
+ "chaos_knight_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Chaos Knight/chaos_knight_intro.wav",
+  "len": 2.476
+ },
+ "guard_creature_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/guard_creature_placed.wav",
+  "len": 1.387
+ },
+ "chaos_wave": {
+  "src": "Assets/Audio/Battle Sounds/Spells/chaos_wave.wav",
+  "len": 4.047
+ },
+ "cliffwalker_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Cliffwalker/cliffwalker_placed.wav",
+  "len": 2.543
+ },
+ "cliffwalker_rock_sound": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Cliffwalker/cliffwalker_rock_sound.wav",
+  "len": 2.303
+ },
+ "corvax_placed_02": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Corvax Bladefire/corvax_placed_02.wav",
+  "len": 4.186
+ },
+ "magic_powerup": {
+  "src": "Assets/Audio/Battle Sounds/Spells/magic_powerup.wav",
+  "len": 2.497
+ },
+ "intense_intro": {
+  "src": "Assets/Audio/Battle Sounds/Intros/intense_intro.wav",
+  "len": 3.384
+ },
+ "cyndra_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Cyndra/cyndra_intro.wav",
+  "len": 2.036
+ },
+ "freezing_wind": {
+  "src": "Assets/Audio/Battle Sounds/Freezing_Wind.wav",
+  "len": 2.01
+ },
+ "sfx_daggerattack_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_DaggerAttack_01.wav",
+  "len": 0.568
+ },
+ "ambush_spell_2": {
+  "src": "Assets/Audio/Battle Sounds/Spells/ambush_spell.wav",
+  "len": 1.771
+ },
+ "dark_acolyte_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Dark Acolyte/dark_acolyte_placed.wav",
+  "len": 2.961
+ },
+ "dark_etheralite_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Dark Etheralite/dark_etheralite_placed.wav",
+  "len": 1.891
+ },
+ "dark_messenger_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Dark Messenger/dark_messenger_intro.wav",
+  "len": 2.055
+ },
+ "dark_impact": {
+  "src": "Assets/Audio/Battle Sounds/dark_impact.wav",
+  "len": 2.967
+ },
+ "hero_intro": {
+  "src": "Assets/Audio/Battle Sounds/Intros/hero_intro.wav",
+  "len": 3.732
+ },
+ "davarok_intro_revision_01": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Davarok/davarok_intro_revision_01.wav",
+  "len": 3.075
+ },
+ "impact_finish_sound": {
+  "src": "Assets/Audio/Battle Sounds/impact_finish_sound.wav",
+  "len": 1.999
+ },
+ "deadeye_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Deadeye/deadeye_placed.wav",
+  "len": 3.214
+ },
+ "sfx_dead_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Dead_01.wav",
+  "len": 0.645
+ },
+ "creature_death_2": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/creature death_2.wav",
+  "len": 1.536
+ },
+ "death_frost_king_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Deathfrost King/death_frost_king_intro.wav",
+  "len": 2.347
+ },
+ "death_knight_intro_02": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Death Knight/death_knight_intro_02.wav",
+  "len": 3.055
+ },
+ "dragon_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/dragon_intro.wav",
+  "len": 2
+ },
+ "water_blast": {
+  "src": "Assets/Audio/Battle Sounds/water_blast.wav",
+  "len": 1.749
+ },
+ "water_splash": {
+  "src": "Assets/Audio/Battle Sounds/water_splash.wav",
+  "len": 1.663
+ },
+ "demon_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Demon Sounds/demon_intro.wav",
+  "len": 2.823
+ },
+ "rat_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/rat_intro.wav",
+  "len": 1.813
+ },
+ "dire_wolf_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Dire Wolf/dire_wolf_placed.wav",
+  "len": 2.466
+ },
+ "soul_drain_impact": {
+  "src": "Assets/Audio/Battle Sounds/Spells/soul_drain_impact.wav",
+  "len": 3.978
+ },
+ "soul_drain_spell": {
+  "src": "Assets/Audio/Battle Sounds/Spells/soul_drain_spell.wav",
+  "len": 4.95
+ },
+ "vanish_sound": {
+  "src": "Assets/Audio/Battle Sounds/vanish_sound.wav",
+  "len": 1.932
+ },
+ "wolf_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/wolf_intro.wav",
+  "len": 1.189
+ },
+ "spider_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Dread Spider/spider_placed.wav",
+  "len": 1.813
+ },
+ "elf_sharpshooter_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/elf_sharpshooter_placed.wav",
+  "len": 1.543
+ },
+ "arrow_rain": {
+  "src": "Assets/Audio/Battle Sounds/arrow_rain.wav",
+  "len": 2.235
+ },
+ "sfx_explode_06": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Explode_06.wav",
+  "len": 3
+ },
+ "ericka_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Ericka/ericka_intro.wav",
+  "len": 1.758
+ },
+ "magic_summoner_04": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Etheralites/magic_summoner_04.wav",
+  "len": 2.932
+ },
+ "dragon_breath": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/dragon_breath.wav",
+  "len": 3.852
+ },
+ "forest_centipede_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Forest Centipede/forest_centipede_placed.wav",
+  "len": 2.367
+ },
+ "forest_lasher_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Forest Lasher/forest_lasher_placed.wav",
+  "len": 1.108
+ },
+ "forest_moth": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Forest Moth/forest_moth.wav",
+  "len": 2.837
+ },
+ "forest_treant_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Forest Treant/forest_treant_placed.wav",
+  "len": 3.103
+ },
+ "forest_vine_creeper_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Forest Vinecreeper/forest_vine_creeper_placed.wav",
+  "len": 1.58
+ },
+ "sfx_watermagic_02": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_WaterMagic_02.wav",
+  "len": 1.039
+ },
+ "frog_shaman_01": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Frog Shaman/frog_shaman_01.wav",
+  "len": 2.467
+ },
+ "backlash": {
+  "src": "Assets/Audio/Battle Sounds/backlash.wav",
+  "len": 2.222
+ },
+ "frog_warlock_01": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Frog Warlock/frog_warlock_01.wav",
+  "len": 2.743
+ },
+ "frost_intro": {
+  "src": "Assets/Audio/Battle Sounds/Spells/frost_intro.wav",
+  "len": 2.196
+ },
+ "giant_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/giant_intro.wav",
+  "len": 2.325
+ },
+ "ghorvok_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Ghorvok/ghorvok_intro.wav",
+  "len": 3.019
+ },
+ "war_drums_intro": {
+  "src": "Assets/Audio/Battle Sounds/war_drums_intro.wav",
+  "len": 4.256
+ },
+ "goblin_raider_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Goblin Raider/goblin_raider_intro.wav",
+  "len": 2.752
+ },
+ "goblin_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Goblin Rider/goblin_intro.wav",
+  "len": 1.776
+ },
+ "lich_warlock_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Lich Warlock/lich_warlock_placed.wav",
+  "len": 2.564
+ },
+ "dark_whisper": {
+  "src": "Assets/Audio/Battle Sounds/Dark_Whisper.wav",
+  "len": 4.065
+ },
+ "goblin_warlock_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Goblin Warlock/goblin_warlock_placed.wav",
+  "len": 1.416
+ },
+ "holy_cast": {
+  "src": "Assets/Audio/Battle Sounds/Spells/holy_cast.wav",
+  "len": 2.348
+ },
+ "gorgonnoth_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Gorgonnoth/gorgonnoth_placed.wav",
+  "len": 2.059
+ },
+ "grahn_placed_on_field": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Grahn Stormhammer/grahn_placed_on_field.wav",
+  "len": 4.178
+ },
+ "thunder": {
+  "src": "Assets/Audio/Extra/thunder.ogg",
+  "len": 5.451
+ },
+ "great_wyrm_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Great Wyrm/great_wyrm_placed.wav",
+  "len": 2
+ },
+ "heal_all": {
+  "src": "Assets/Audio/Battle Sounds/heal_all.wav",
+  "len": 2.785
+ },
+ "demon_behold": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Hellfire Demon/demon_behold.wav",
+  "len": 1.519
+ },
+ "hexx_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Hexx/hexx_intro.wav",
+  "len": 1.873
+ },
+ "high_king_morghar_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/High King Mo'Ghar/high_king_morghar_intro.wav",
+  "len": 3.679
+ },
+ "jardok_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Jardok The Blacksmith/jardok_placed.wav",
+  "len": 1.482
+ },
+ "blacksmith_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Jardok The Blacksmith/blacksmith_intro.wav",
+  "len": 1.857
+ },
+ "jester_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Jester Trickwind/jester_intro.wav",
+  "len": 1.452
+ },
+ "sfx_buff_02": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Buff_02.wav",
+  "len": 0.984
+ },
+ "king_aros_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/King Aros/king_aros_intro.wav",
+  "len": 1.972
+ },
+ "background_cheering": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/background_cheering.wav",
+  "len": 2.802
+ },
+ "korthanis_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Korthanis/korthanis_intro.wav",
+  "len": 2.986
+ },
+ "ominous_intro": {
+  "src": "Assets/Audio/Battle Sounds/Intros/ominous_intro.wav",
+  "len": 3.43
+ },
+ "krolarg_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Kro'larg/krolarg_intro.wav",
+  "len": 3.085
+ },
+ "lady_korvanna_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Lady Korvanna/lady_korvanna_intro.wav",
+  "len": 2.932
+ },
+ "leviathan_emerge": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Leviathan/leviathan_emerge.wav",
+  "len": 2.185
+ },
+ "leviathan_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Leviathan/leviathan_intro.wav",
+  "len": 3.047
+ },
+ "lilly_placed_on_field": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Lilly Goldheart/lilly_placed_on_field.wav",
+  "len": 1.926
+ },
+ "spell_holy_light": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Lilly Goldheart/spell_holy_light.wav",
+  "len": 2.389
+ },
+ "lindoris_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Lindoris/lindoris_intro.wav",
+  "len": 1.711
+ },
+ "lord_tyllis_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Lord Tyllis/lord_tyllis_intro.wav",
+  "len": 1.875
+ },
+ "malizar_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Malizar/malizar_intro.wav",
+  "len": 3.511
+ },
+ "malpheria_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Malpheria/malpheria_intro.wav",
+  "len": 3.705
+ },
+ "holy_intro": {
+  "src": "Assets/Audio/Battle Sounds/Intros/holy_intro.wav",
+  "len": 4.082
+ },
+ "forest_minion_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Man Eater/forest_minion_placed.wav",
+  "len": 2.457
+ },
+ "mordanian_knight_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Mordanian Knight/mordanian_knight_placed.wav",
+  "len": 1.228
+ },
+ "nautilus_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Nautilus/nautilus_placed.wav",
+  "len": 3.535
+ },
+ "naga_voice_male": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Naga Warrior/naga_voice_male.wav",
+  "len": 3.321
+ },
+ "nautilus_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Nautilus/nautilus_intro.wav",
+  "len": 2.421
+ },
+ "necrolyte_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Necrolyte/necrolyte_placed.wav",
+  "len": 3.641
+ },
+ "sfx_rain_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Rain_01.wav",
+  "len": 4
+ },
+ "storm_wind_rain": {
+  "src": "Assets/Audio/Battle Sounds/storm_wind_rain.wav",
+  "len": 3.185
+ },
+ "zharg_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Zharg/zharg_intro.wav",
+  "len": 2.61
+ },
+ "oblivion": {
+  "src": "Assets/Audio/Battle Sounds/Spells/oblivion.wav",
+  "len": 2.683
+ },
+ "obzalix_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Obzalix/obzalix_intro.wav",
+  "len": 2.116
+ },
+ "mystic_sound": {
+  "src": "Assets/Audio/Battle Sounds/Spells/mystic_sound.wav",
+  "len": 3.004
+ },
+ "ogre_bodyguard_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Ogre Bodyguard/ogre_bodyguard_intro.wav",
+  "len": 1.6
+ },
+ "ogre_female_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Ogre Magi/ogre_female_intro.wav",
+  "len": 1.767
+ },
+ "penguin_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Penguin Defender/penguin_intro.wav",
+  "len": 1.133
+ },
+ "perojin_radier_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Perojin Raider/perojin_radier_placed.wav",
+  "len": 0.783
+ },
+ "bat_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Bat Sounds/bat_placed.wav",
+  "len": 1.536
+ },
+ "wind": {
+  "src": "Assets/Audio/Battle Sounds/Wind.wav",
+  "len": 1.856
+ },
+ "sfx_aura_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Aura_01.wav",
+  "len": 1.087
+ },
+ "poltergeist_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Poltergeist/poltergeist_placed.wav",
+  "len": 2.962
+ },
+ "premonition": {
+  "src": "Assets/Audio/Battle Sounds/Spells/premonition.wav",
+  "len": 3.017
+ },
+ "prince_maldrik_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Prince Maldrik/prince_maldrik_intro.wav",
+  "len": 2.023
+ },
+ "rebirth": {
+  "src": "Assets/Audio/Battle Sounds/Spells/rebirth.wav",
+  "len": 3.627
+ },
+ "quogore_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Quogore/quogore_intro.wav",
+  "len": 1.929
+ },
+ "raging_minotaur_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Raging Minotaur/raging_minotaur_placed.wav",
+  "len": 2.471
+ },
+ "saria_placed_on_field": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Saria Shadowblade/saria_placed_on_field.wav",
+  "len": 4.491
+ },
+ "shadow_wraith_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Shadow Wraith/shadow_wraith_placed.wav",
+  "len": 2.209
+ },
+ "shield_bash_spell": {
+  "src": "Assets/Audio/Battle Sounds/Spells/shield_bash_spell.wav",
+  "len": 1.643
+ },
+ "shrieking_banshee_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Shrieking Banshee/shrieking_banshee_placed.wav",
+  "len": 3.914
+ },
+ "silent_assassin_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Silent Assassin/silent_assassin_placed.wav",
+  "len": 1.984
+ },
+ "sir_finley_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Sir Finley/sir_finley_intro.wav",
+  "len": 2.35
+ },
+ "ghoul_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Zombie Walker/ghoul_placed.wav",
+  "len": 2.041
+ },
+ "shock_spell": {
+  "src": "Assets/Audio/Battle Sounds/Spells/shock_spell.wav",
+  "len": 1.899
+ },
+ "sfx_recovery_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Recovery_01.wav",
+  "len": 2.303
+ },
+ "sfx_boost_01": {
+  "src": "Assets/External/VFX/FX Quest2/Particles/Sounds/SFX_Boost_01.wav",
+  "len": 1.7
+ },
+ "guard_skill": {
+  "src": "Assets/Audio/Battle Sounds/guard_skill.wav",
+  "len": 1.483
+ },
+ "heal": {
+  "src": "Assets/Audio/Battle Sounds/heal.wav",
+  "len": 3.151
+ },
+ "skyhawk_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Skyhawk/skyhawk_intro.wav",
+  "len": 1.433
+ },
+ "skymarch_ranger_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Skymarch Ranger/skymarch_ranger_placed.wav",
+  "len": 0.737
+ },
+ "magic_shot": {
+  "src": "Assets/Audio/Battle Sounds/magic_shot.wav",
+  "len": 1.196
+ },
+ "skymarch_vanguard_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Skymarch Vanguard/skymarch_vanguard_intro.wav",
+  "len": 1.537
+ },
+ "snarlbane_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Snarlbane/snarlbane_intro.wav",
+  "len": 2.668
+ },
+ "holy_something": {
+  "src": "Assets/Audio/Battle Sounds/Spells/Holy_something.wav",
+  "len": 1.941
+ },
+ "sprite_enchantress_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Sprite Enchantress/sprite_enchantress_intro.wav",
+  "len": 1.358
+ },
+ "blowing_wind": {
+  "src": "Assets/Audio/Battle Sounds/Blowing_Wind.wav",
+  "len": 4.321
+ },
+ "sprite_priestess_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Sprite Priestess/sprite_priestess_placed.wav",
+  "len": 1.889
+ },
+ "sprite_enchantress_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Sprite Enchantress/sprite_enchantress_placed.wav",
+  "len": 1.18
+ },
+ "sprite_warrio_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Sprite Warrior/sprite_warrio_placed.wav",
+  "len": 1.799
+ },
+ "skill_impact": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Storm Dragon/skill_impact.wav",
+  "len": 3.321
+ },
+ "sylvana_allure_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Sylvana Allure/sylvana_allure_intro.wav",
+  "len": 1.35
+ },
+ "imp_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Tricky Imp/imp_intro.wav",
+  "len": 0.836
+ },
+ "umbari_huntress_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Um'bari Huntress/umbari_huntress_placed.wav",
+  "len": 1.047
+ },
+ "umbari_warrior_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Um'bari Warrior/umbari_warrior_placed.wav",
+  "len": 1.814
+ },
+ "ghoul_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Zombie Walker/ghoul_intro.wav",
+  "len": 1.461
+ },
+ "urrivas_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Ur'Rivas/urrivas_intro.wav",
+  "len": 3.931
+ },
+ "bats_flying": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/bats_flying.wav",
+  "len": 2
+ },
+ "valanar_dreadmire_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Valanar Dreadmire/valanar_dreadmire_intro.wav",
+  "len": 2.846
+ },
+ "viphorra_placed": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Vi'Phorra/viphorra_placed.wav",
+  "len": 2.26
+ },
+ "voltriss_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Voltriss/voltriss_intro.wav",
+  "len": 3.435
+ },
+ "wild_huntress_placed_2": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Wild Huntress/wild_huntress_placed_2.wav",
+  "len": 1.886
+ },
+ "wrynoc_intro": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Wrynoc/wrynoc_intro.wav",
+  "len": 3.044
+ },
+ "demon_taunt": {
+  "src": "Assets/Audio/Battle Sounds/Creatures/Zarkoth/demon_taunt.wav",
+  "len": 2.021
+ }
+}

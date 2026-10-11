@@ -128,6 +128,24 @@ ul { list-style: none; margin: 0; padding: 0; }
   transition: background .2s, color .2s;
 }
 .signup:hover { filter: drop-shadow(0 0 10px rgba(240, 205, 120, .8)); }
+.signup--play span { padding-inline: 34px; color: #1b1104; background: linear-gradient(180deg, var(--gold-100), var(--gold-500)); }
+.signup--play:hover span { color: #1b1104; background: linear-gradient(180deg, #fff, var(--gold-300)); }
+.signup--play + .signup { margin-left: -14px; }
+.signup--play + .signup span { padding-inline: 34px; }
+/* Two buttons share the top bar: it tightens below 1760px, and below 1320px Sign Up (the Discord
+   link, which is also among the icons) makes room for Play Now */
+@media (min-width: 1100px) and (max-width: 1759px) {
+  .nav__menu { gap: 1.4vw; }
+  .nav__links { gap: 1.9vw; margin-left: 1vw; }
+  .nav__social { gap: 12px; }
+  .signup span, .signup--play + .signup span { padding-inline: 1.7vw; font-size: clamp(16px, 1.3vw, 21px); }
+  .signup--play + .signup { margin-left: -4px; }
+}
+@media (min-width: 1100px) and (max-width: 1319px) {
+  .signup--play + .signup { display: none; }
+  .nav__links { gap: 1.4vw; margin-left: 0; }
+  .nav__social { gap: 9px; }
+}
 .signup:hover span { background: linear-gradient(180deg, #1a2850, #0c1632); color: var(--gold-100); }
 
 .nav__toggle {
@@ -262,6 +280,14 @@ ul { list-style: none; margin: 0; padding: 0; }
   --edge: #d8cba6;
   background: linear-gradient(180deg, rgba(10, 18, 44, .97), rgba(3, 7, 20, .98));
 }
+/* Play in browser: the one filled button of the row */
+.dl--play {
+  --edge: var(--gold-100);
+  color: #1b1104;
+  background: linear-gradient(180deg, #f8dd94, var(--gold-500) 55%, #a97a25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 0 20px rgba(240, 205, 120, .45), 0 6px 22px rgba(0, 0, 0, .55);
+}
+.dl--play:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 0 30px rgba(240, 205, 120, .85), 0 10px 26px rgba(0, 0, 0, .6); }
 .dl:hover { transform: translateY(-3px); filter: brightness(1.15); }
 .dl--gold:hover, .dl--silver:hover { box-shadow: 0 0 18px rgba(240, 205, 120, .55), 0 10px 26px rgba(0, 0, 0, .6); }
 
@@ -399,7 +425,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .nav__links { flex-direction: column; align-items: center; gap: 10px; margin: 0; }
   .nav__links a { font-size: 21px; }
   .nav__social { margin: 0; }
-  .signup { margin: 0; }
+  .signup, .signup--play + .signup { margin: 0; }
 }
 
 @media (max-width: 420px) {

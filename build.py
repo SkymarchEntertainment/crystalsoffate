@@ -9,6 +9,7 @@ SITE = 'https://remiclassic.github.io/crystalsoffate/'
 DOCS = 'https://docs.crystalsoffate.com/crystals-of-fate/'
 DESC = ('Crystals of Fate is a multi-platform esports driven collectible card game, '
         'featuring real-time simultaneous interactive gameplay.')
+PLAY = 'play/'  # the browser build of the game (see README, "Play in browser")
 PC = 'https://d33pj9i8vfml2r.cloudfront.net/Builds/CoF-PC.zip'
 APK = 'https://d33pj9i8vfml2r.cloudfront.net/Builds/CoF-Android.apk'
 DISCORD = 'https://discord.gg/9n9v3V9'
@@ -72,6 +73,7 @@ def social(extra=()):
 
 def downloads(cls=''):
     return f'''<div class="downloads {cls}">
+          <a class="dl dl--play" href="{PLAY}">{icon('play')}<span class="dl__text"><b>Play Now</b><small>In Your Browser</small></span></a>
           <a class="dl dl--gold" href="{PC}">{icon('windows')}<span class="dl__text"><b>PC</b><small>Download Now</small></span></a>
           <a class="dl dl--silver" href="{APK}">{icon('android')}<span class="dl__text"><b>Android</b><small>Download Now</small></span></a>
         </div>'''
@@ -118,6 +120,7 @@ def page(filename, title, active, main, desc=DESC, og='assets/img/og.jpg', prelo
       <div class="nav__menu" id="menu">
         <nav class="nav__links" aria-label="Primary">{links}</nav>
         <div class="nav__social">{social()}</div>
+        <a class="signup signup--play" href="{PLAY}"><span>Play Now</span></a>
         <a class="signup" href="{DISCORD}" target="_blank" rel="noopener"><span>Sign Up</span></a>
       </div>
     </div>
@@ -417,7 +420,7 @@ def home():
       <canvas class="motes" data-motes="0.8" aria-hidden="true"></canvas>
       <div class="feature__inner">
         <h2 data-reveal>Battle For Glory</h2>{RULE}
-        <p data-reveal>Download and play today.</p>
+        <p data-reveal>Play in your browser, or download and play today.</p>
         {downloads('downloads--static')}
       </div>
     </section>'''
@@ -648,6 +651,7 @@ def not_found():
         s = s.replace(f'="{a}', f'="{SITE}{a}').replace(f'url({a}', f'url({SITE}{a}')
     for f in ('index', 'news', 'genesis-sale', 'media', 'support', 'terms'):
         s = s.replace(f'href="{f}.html"', f'href="{SITE}{f}.html"')
+    s = s.replace(f'href="{PLAY}"', f'href="{SITE}{PLAY}"')
     open(p, 'w', encoding='utf-8', newline='\n').write(s)
 
 
