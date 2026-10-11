@@ -11,7 +11,6 @@ DESC = ('Crystals of Fate is a multi-platform esports driven collectible card ga
         'featuring real-time simultaneous interactive gameplay.')
 PC = 'https://d33pj9i8vfml2r.cloudfront.net/Builds/CoF-PC.zip'
 APK = 'https://d33pj9i8vfml2r.cloudfront.net/Builds/CoF-Android.apk'
-HYPERPLAY = 'https://store.hyperplay.xyz/game/crystalsoffate'
 DISCORD = 'https://discord.gg/9n9v3V9'
 TWITTER = 'https://twitter.com/crystalsoffate'
 YOUTUBE = 'https://www.youtube.com/channel/UCmg9NPExNEJ2cwftz03y1BA'
@@ -74,7 +73,6 @@ def social(extra=()):
 def downloads(cls=''):
     return f'''<div class="downloads {cls}">
           <a class="dl dl--gold" href="{PC}">{icon('windows')}<span class="dl__text"><b>PC</b><small>Download Now</small></span></a>
-          <a class="dl dl--blue" href="{HYPERPLAY}" target="_blank" rel="noopener">{icon('hyperplay')}<span class="dl__text dl__text--hp"><small>Download on</small><b>HyperPlay</b></span></a>
           <a class="dl dl--silver" href="{APK}">{icon('android')}<span class="dl__text"><b>Android</b><small>Download Now</small></span></a>
         </div>'''
 
