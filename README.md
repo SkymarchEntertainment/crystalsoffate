@@ -1,6 +1,6 @@
 # Crystals of Fate website
 
-Static site for [Crystals of Fate](https://www.crystalsoffate.com/), served with GitHub Pages from the `main` branch root: https://skymarchentertainment.github.io/crystalsoffate/
+Static site for [Crystals of Fate](https://www.crystalsoffate.com/), served with GitHub Pages (`SkymarchEntertainment/crystalsoffate`, `main` branch root) at https://www.crystalsoffate.com/. DNS is managed in Wix
 
 ## Pages
 
