@@ -5,7 +5,7 @@ from html import escape
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE = 'https://remiclassic.github.io/crystalsoffate/'
+SITE = 'https://skymarchentertainment.github.io/crystalsoffate/'
 DOCS = 'https://docs.crystalsoffate.com/crystals-of-fate/'
 DESC = ('Crystals of Fate is a multi-platform esports driven collectible card game, '
         'featuring real-time simultaneous interactive gameplay.')
